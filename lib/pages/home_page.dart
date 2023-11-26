@@ -12,10 +12,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var _deviceHeight;
   var _deviceWidth;
+  var _selectedGame;
 
   @override
   void initState() {
     super.initState();
+    _selectedGame = 0;
   }
 
 
@@ -39,13 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
       height: _deviceHeight * 0.5,
       width: _deviceWidth,
       child: PageView(
+        onPageChanged: (_index){
+          setState(() {
+            _selectedGame = _index;
+          });
+        },
         scrollDirection: Axis.horizontal,
         children: featuredGames.map((_game) {
           return Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(_game.coverImage!.url),)
+                  image: NetworkImage(_game.coverImage.url),)
             ),
           );
         }).toList(),
@@ -84,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _topBarWidget(),
+          _featuredGamesInfoWidget(),
         ],
       ),
     );
@@ -107,6 +115,33 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
+    );
+  }
+
+
+  Widget _featuredGamesInfoWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.12,
+      width: _deviceWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+
+          Text(featuredGames[_selectedGame].title,
+            maxLines: 2,
+            style: TextStyle(
+              fontSize: _deviceHeight * 0.050,
+              fontWeight: FontWeight.bold,
+            ),),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+          ),
+        ],
+      ),
     );
   }
 }

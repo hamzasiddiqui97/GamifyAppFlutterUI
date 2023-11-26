@@ -6,11 +6,11 @@ class GameImage {
 }
 
 class Game {
-  String? title;
-  GameImage? coverImage;
+  String title;
+  GameImage coverImage;
   List<GameImage>? images;
-  String? description;
-  String? studio;
+  String description;
+  String studio;
 
   Game(this.title, this.coverImage, this.description, this.studio);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamify_app/data.dart';
+import 'package:gamify_app/widgets/scrollable_games_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -26,12 +27,17 @@ class _MyHomePageState extends State<MyHomePage> {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Stack(
-        children: [
-          _featuredGamesWidget(),
-          _gradientBoxWidget(),
-          _topLayerWidget(),
-        ],
+      body: SingleChildScrollView(
+
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        child: Stack(
+          children: [
+            _featuredGamesWidget(),
+            _gradientBoxWidget(),
+            _topLayerWidget(),
+          ],
+        ),
       ),
     );
   }
@@ -51,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   image: NetworkImage(_game.coverImage.url),)
             ),
           );
@@ -91,7 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _topBarWidget(),
+          SizedBox(
+            height: _deviceHeight * 0.13,
+          ),
           _featuredGamesInfoWidget(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
+            child: ScrollableGamesWidget(height: _deviceHeight *0.24, width: _deviceWidth, showTitle: true, gameData: games),
+          )
         ],
       ),
     );
@@ -135,10 +148,27 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: _deviceHeight * 0.050,
               fontWeight: FontWeight.bold,
             ),),
+
+          SizedBox(
+            height: _deviceHeight * 0.01,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((_game) {
+              double _circleRadius = _deviceHeight * 0.005;
+              bool _isActice = _game.title == featuredGames[_selectedGame].title;
+              return Container(
+                margin: EdgeInsets.only(right: _deviceWidth * 0.015),
+                decoration: BoxDecoration(
+                  color: _isActice ? Colors.green : Colors.grey,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                height: _circleRadius * 2,
+                width: _circleRadius * 2,
+              );
+            }).toList(),
           ),
         ],
       ),

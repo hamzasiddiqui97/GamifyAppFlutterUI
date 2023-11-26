@@ -85,7 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _topLayerWidget() {
     return Padding(
-
       padding: EdgeInsets.symmetric(
           horizontal: _deviceWidth * 0.04, vertical: _deviceHeight * 0.03),
       child: Column(

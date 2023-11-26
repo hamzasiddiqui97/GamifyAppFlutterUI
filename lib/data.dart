@@ -59,20 +59,20 @@ List<Game> games2 = [
     "",
     "Rockstar Games",
   ),
-  Game(
-    "The Last of Us Part II",
-    GameImage("https://mvpo.us/img/P6253.jpg", ""),
-    "",
-    "Naughty Dog",
-  ),
-  Game(
-    "Sekiro: Shadows Die Twice",
-    GameImage(
-        "https://onlysp.escapistmagazine.com/wp-content/uploads/2019/03/Sekiro-Shadows-Die-Twice-logo-art.jpg",
-        ""),
-    "",
-    "From Software",
-  ),
+  // Game(
+  //   "The Last of Us Part II",
+  //   GameImage("http://t1.gstatic.com/images?q=tbn:ANd9GcQ9ye_oF2iXEQLMerfjgQOvJUxG_xTyrISOzgiInh2aKiUURif9O28g3CwKJVNXB1iBC12V", ""),
+  //   "",
+  //   "Naughty Dog",
+  // ),
+  // Game(
+  //   "Sekiro: Shadows Die Twice",
+  //   GameImage(
+  //       "https://onlysp.escapistmagazine.com/wp-content/uploads/2019/03/Sekiro-Shadows-Die-Twice-logo-art.jpg",
+  //       ""),
+  //   "",
+  //   "From Software",
+  // ),
   Game(
     "Just Cause 4",
     GameImage(

@@ -28,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           _featuredGamesWidget(),
           _gradientBoxWidget(),
+          _topLayerWidget(),
         ],
       ),
     );
@@ -52,19 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-
-
-
-  _gradientBoxWidget() {
+  Widget _gradientBoxWidget() {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: _deviceHeight* 0.80,
+        height: _deviceHeight* 0.76,
         width: _deviceWidth,
         decoration: const BoxDecoration(
-
-
             gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -72,9 +67,46 @@ class _MyHomePageState extends State<MyHomePage> {
                 colors: [
                   Color.fromRGBO(35, 46, 59, 1.0),
                   Colors.transparent,
-
-                ])),
+                ],
+            ),
+        ),
       ),
+    );
+  }
+
+
+  Widget _topLayerWidget() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.04, vertical: _deviceHeight * 0.03),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _topBarWidget(),
+        ],
+      ),
+    );
+  }
+
+  Widget _topBarWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.13,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(Icons.menu, color: Colors.white, size: 30,),
+            Row(
+              children: [
+                const Icon(Icons.search, color: Colors.white, size: 30,),
+                SizedBox(width: _deviceWidth*0.03,),
+                const Icon(Icons.notifications_none, color: Colors.white, size: 30,),
+              ],
+            )
+          ],
+        ),
     );
   }
 }

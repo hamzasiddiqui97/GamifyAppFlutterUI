@@ -4,7 +4,9 @@ import 'package:gamify_app/widgets/button_widget.dart';
 import 'package:gamify_app/widgets/textfield_widget.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  AnimationController animationController;
+
+  LoginPage({super.key, required this.animationController});
 
   @override
   Widget build(BuildContext context) {

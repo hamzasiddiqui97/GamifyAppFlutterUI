@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamify_app/pages/home_page.dart';
-import 'package:gamify_app/pages/login_page.dart';
+import 'package:gamify_app/utils/animations/login_page_animations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/' : (context) =>  const LoginPage(),
+        '/' : (context) =>  const AnimatedLoginPage(),
         '/homepage' : (context) =>  const MyHomePage(),
       },
       debugShowCheckedModeBanner: false,
